@@ -10,7 +10,8 @@
 
 % Misc
 \usepackage{graphicx}
-\usepackage[hidelinks]{hyperref} %textopdfstring from pandoc
+%\usepackage[hidelinks]{hyperref} %textopdfstring from pandoc
+\usepackage{hyperref} 
 \usepackage{soul} % Highlight using \hl{}
 
 % Table
@@ -33,22 +34,10 @@
 \setlength{\parindent}{0pt}%
 
 % Quotation styles
-
-\usepackage{framed}
-\let\oldquote=\quote
-\let\endoldquote=\endquote
-\renewenvironment{quote}{\begin{fquote}\advance\leftmargini -2.4em\begin{oldquote}}{\end{oldquote}\end{fquote}}
-
-\usepackage{xcolor}
-\newenvironment{fquote}
-  {\def\FrameCommand{
-	\fboxsep=0.6em % box to text padding
-	\fcolorbox{black}{white}}%
-	% the "2" can be changed to make the box smaller
-    \MakeFramed {\advance\hsize-2\width \FrameRestore}
-    \begin{minipage}{\linewidth}
-  }
-  {\end{minipage}\endMakeFramed}
+  
+\usepackage{mdframed}
+\renewmdenv[leftmargin=0.4em, rightmargin=0.4em%
+innerleftmargin=0.6em,innerrightmargin=0.6em]{quote}
 
 % Table styles
 
@@ -70,8 +59,8 @@
 \usepackage{suffix}
 \long\def\RC#1\par{\makebox[0pt][r]{\bf RC:\hspace{4mm}}\textbf{\textit{#1}}\par} %\RC
 \WithSuffix\long\def\RC*#1\par{\textbf{\textit{#1}}\par} %\RC*
-\long\def\AR#1\par{\makebox[0pt][r]{AR:\hspace{10pt}}\textit{#1}\par} %\AR
-\WithSuffix\long\def\AR*#1\par{\textit{#1}\par} %\AR*
+\long\def\AR#1\par{\makebox[0pt][r]{AR:\hspace{10pt}}#1\par} %\AR
+\WithSuffix\long\def\AR*#1\par{#1\par} %\AR*
 
 
 %%%
@@ -94,3 +83,23 @@
 \providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
 \providecommand{\DIFdelendFL}{} %DIF PREAMBLE
 %DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+
+\makeatletter
+% Define title defaults if not defined by user
+\providecommand{\lettertitle}{Authors' Response to Reviews of}
+\let\@journal\@empty
+\let\@doi\@empty
+\newcommand{\journal}[1]{\gdef\@journal{#1}}
+\newcommand{\doi}[1]{\gdef\@doi{#1}}
+
+% Make title and legend
+\renewcommand\maketitle{
+{\Large\bf \lettertitle}\\[1em]
+{\LARGE \@title}\\[1em]
+{\@author}\\
+{\it \@journal, }\texttt{\@doi}\\
+\hrule
+\hfill {\bfseries RC:} \textbf{\textit{Reviewers' Comment}},\(\quad\) AR: Authors' Response, \(\quad\square\) Manuscript Text
+}
+\makeatother
