@@ -4,10 +4,11 @@ Latex template to quickly write author response letters to review comments.
 Based on @mschroen's [review_response_letter](https://github.com/mschroen/review_response_letter). 
 
 ## Example
-Use the example `Einstein1905.tex`. Please ensure the class file `ar2rc.cls` is in the same directory.
+See the example `Einstein1905.tex`. Please ensure the class file `ar2rc.cls` is in the same directory.
 
 <img alt="Screenshot of the output PDF of a Author Response Letter to Review Comments" src="https://cloud.githubusercontent.com/assets/7942719/26349939/c9889c00-3fb1-11e7-91c6-908012e2797e.png" style="max-width: 100%" />
 
+### LaTeX
 ```  
 \section{Reviewer 1}
 \subsection{Page 4 Line 15}
