@@ -1,45 +1,14 @@
-# Review and Response Letters
-Template for Latex and/or Pandoc to quickly write reviews and (author) response letters 
+# Author Response Letters
+Latex template to quickly write author response letters to review comments. 
 
-## Review Comments to a Manuscript
+Based on @mschroen's [review_response_letter](https://github.com/mschroen/review_response_letter). 
 
-Use the examples in folder `RC_to_MS/`.
-
-<img alt="Screenshot of the output PDF of Review Comments to the Manuscript" src="https://cloud.githubusercontent.com/assets/7942719/26351113/57c6fd46-3fb6-11e7-926f-2441c813ced1.png" style="max-width: 100%" />
-
-### Option A: Latex
-
-```  
-\section{Anonymuous Reviewer}
-\subsection{Page 4 Line 15}
-begin{quote} The cat in the box is \hl{dead}. \end{quote}
-\RC It could be alive as well.
-```
-
-Then run `pdflatex myletter.tex` to make `myletter.pdf`.
-
-
-### Option B: Markdown
-
-```
-# Anonymuous Reviewer
-## Page 4 Line 15
-> The cat in the box is \hl{dead}.
-\RC It could be alive as well.
-```
-
-Then run `pandoc -s -S --template ../templates/RC_to_MS-pandoc.tex myletter.md -o myletter.pdf` to make `myletter.pdf`.
-
-
-
-## Author Response to Review Comments
-
-Use the examples in folder `AR_to_RC/`.
+## Example
+See the example `Einstein1905.tex`. Please ensure the class file `ar2rc.cls` is in the same directory.
 
 <img alt="Screenshot of the output PDF of a Author Response Letter to Review Comments" src="https://cloud.githubusercontent.com/assets/7942719/26349939/c9889c00-3fb1-11e7-91c6-908012e2797e.png" style="max-width: 100%" />
 
-### Option A: Latex
-
+### LaTeX
 ```  
 \section{Reviewer 1}
 \subsection{Page 4 Line 15}
@@ -48,25 +17,18 @@ Use the examples in folder `AR_to_RC/`.
 begin{quote} The cat in the box is \DIFdelbegin \DIFdel{dead}\DIFdelend \DIFaddbegin \DIFadd{alive}\DIFaddend . \end{quote}
 ```
 
-Then run `pdflatex myletter.tex` to make `myletter.pdf`.
+Then run `pdflatex myletter.tex` to make `myletter.pdf`, or typeset with any TeX front-end program.
 
-
-### Option B: Markdown
-
-```
-# Reviewer 1
-## Page 4 Line 15
-\RC Paragraph on how I do not like the paper.
-\AR Thank you, we changed the text as suggested.
-> The cat in the box is \DIFdelbegin \DIFdel{dead}\DIFdelend \DIFaddbegin \DIFadd{alive}\DIFaddend .
-```
-
-Then run `pandoc -s -S --template ../templates/AR_to_RC-pandoc.tex myletter.md -o myletter.pdf` to make `myletter.pdf`.
+## Changelog
+- Created the document class `ar2rc` to allow additional preambles in the main document.
+- Non-labeled paragraphs for author response does not require additional `\AR*`.
+- Use [mdframed](https://ctan.org/pkg/mdframed) instead of [framed](https://ctan.org/pkg/framed), and support breakable text boxes for quotes.
+- Easier syntax to make title.
 
 ## Additional features
 
 - supports latexdiff commands
 - supports text highlighting with `\hl{}`
 - supports tables and figures,
-- supports non-labeled paragraphs, starting with `\AR*` or `\RC*` instead of `\AR` or `\RC`, respectively.
+- supports non-labeled paragraphs for reviewer comments, starting with `\RC*` instead of `\RC`.
 
