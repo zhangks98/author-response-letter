@@ -1,7 +1,8 @@
 # Author Response Letters
-Latex template to quickly write author response letters to review comments. 
+Latex template to quickly write author response letters to review comments. Based on @mschroen's [review_response_letter](https://github.com/mschroen/review_response_letter). 
 
-Based on @mschroen's [review_response_letter](https://github.com/mschroen/review_response_letter). 
+Available on [Overleaf Template](https://www.overleaf.com/latex/templates/author-response-to-review-comments/kjxffkbxkfzk).
+
 
 ## Example
 See the example `Einstein1905.tex`. Please ensure the class file `ar2rc.cls` is in the same directory.
